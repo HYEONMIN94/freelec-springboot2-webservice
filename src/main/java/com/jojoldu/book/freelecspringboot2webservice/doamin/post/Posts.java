@@ -1,5 +1,6 @@
 package com.jojoldu.book.freelecspringboot2webservice.doamin.post;
 
+import com.jojoldu.book.freelecspringboot2webservice.doamin.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "TB_POSTS")
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
