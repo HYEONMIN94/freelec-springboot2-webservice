@@ -2,6 +2,7 @@ package com.jojoldu.book.freelecspringboot2webservice.web;
 
 import com.jojoldu.book.freelecspringboot2webservice.doamin.post.Posts;
 import com.jojoldu.book.freelecspringboot2webservice.doamin.post.PostsRepository;
+import com.jojoldu.book.freelecspringboot2webservice.web.dto.PostsDtoManager;
 import com.jojoldu.book.freelecspringboot2webservice.web.dto.PostsSaveRequestDto;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,7 +45,8 @@ class PostsApiControllerTest {
         String title = "title";
         String content = "content";
         String author = "author";
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+        //PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+        PostsDtoManager requestDto = PostsSaveRequestDto.builder()
                 .title(title)
                 .content(content)
                 .author(author)
@@ -79,14 +81,14 @@ class PostsApiControllerTest {
         String expectedTitle = "title2";
         String expectedContent = "content2";
 
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+        PostsDtoManager requestDto = PostsUpdateRequestDto.builder()
                 .title(expectedTitle)
                 .content(expectedContent)
                 .build();
 
         String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
 
-        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+        HttpEntity<PostsDtoManager> requestEntity = new HttpEntity<>(requestDto);
 
         //when
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
