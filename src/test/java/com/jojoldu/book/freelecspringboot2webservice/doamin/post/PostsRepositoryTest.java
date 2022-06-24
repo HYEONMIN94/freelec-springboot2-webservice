@@ -22,7 +22,8 @@ class PostsRepositoryTest {
 
     @AfterEach
     public  void clanup(){
-        postsRepository.deleteAll();
+
+        //postsRepository.deleteAll();
     }
 
     @Test
@@ -40,6 +41,7 @@ class PostsRepositoryTest {
         //when
         List<Posts> postsList = postsRepository.findAll();
         Posts posts = postsList.get(0);
+
 
         //then
         assertThat(posts.getTitle()).isEqualTo(title);
